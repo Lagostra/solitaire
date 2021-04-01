@@ -5,3 +5,9 @@ export interface ICard {
   suit: CardSuit;
   number: CardNumber;
 }
+
+export interface IFlippableCard extends ICard {
+  flipped: boolean;
+}
+
+export * from "./klondike";

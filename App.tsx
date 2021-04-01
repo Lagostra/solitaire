@@ -1,34 +1,11 @@
-import { Card, Stack, StackGroup } from "components";
+import { Card, KlondikeBoard, Stack, StackGroup } from "components";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
+import { createKlondikeGameState } from "utils";
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <StackGroup
-        cardGroups={[
-          [
-            { number: 1, suit: "H" },
-            { number: 2, suit: "C" },
-            { number: 3, suit: "S" },
-            { number: 4, suit: "D" },
-          ],
-          [
-            { number: 1, suit: "H" },
-            { number: 2, suit: "H" },
-            { number: 3, suit: "H" },
-            { number: 4, suit: "H" },
-          ],
-          [
-            { number: 1, suit: "H" },
-            { number: 2, suit: "H" },
-            { number: 3, suit: "H" },
-            { number: 4, suit: "H" },
-          ],
-        ]}
-      />
-    </View>
-  );
+  const gameState = createKlondikeGameState();
+  return <KlondikeBoard gameState={gameState} />;
 }
 
 const styles = StyleSheet.create({

@@ -21,8 +21,8 @@ interface IProps {
 const Stack = ({ cards, style }: IProps) => {
   return (
     <div>
-      {cards.map((card) => (
-        <Card card={card} style={{ ...styles.card, ...style }} />
+      {cards.map((card, i) => (
+        <Card card={card} style={{ ...styles.card, ...style }} key={i} />
       ))}
     </div>
   );

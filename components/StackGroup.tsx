@@ -20,8 +20,8 @@ interface IProps {
 const StackGroup = ({ cardGroups }: IProps) => {
   return (
     <View style={classes.stackGroup}>
-      {cardGroups.map((cards) => (
-        <Stack cards={cards} style={classes.stack} />
+      {cardGroups.map((cards, i) => (
+        <Stack cards={cards} style={classes.stack} key={i} />
       ))}
     </View>
   );
