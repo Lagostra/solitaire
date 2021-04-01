@@ -1,7 +1,7 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, ViewStyle, TextStyle, StyleSheet } from "react-native";
 import { ICard } from "types";
-import { getNumberSymbol, getSuitSymbol } from "utils";
+import { getNumberSymbol, getSuitColor, getSuitSymbol } from "utils";
 
 const classes = {
   card: {
@@ -9,9 +9,13 @@ const classes = {
     flexDirection: "column",
     width: "100px",
     height: "150px",
-    boxShadow: "2px 2px 7px -1px #000000",
+    borderColor: "#BBB",
+    borderWidth: 1,
+    //shadowColor: "#000",
+    //shadowOffset: { width: 0, height: 2 },
+    //shadowRadius: 5,
     borderRadius: 5,
-    background: "#FFFFFF",
+    backgroundColor: "#FFF",
     padding: 10,
   },
   topIconRow: {
@@ -25,7 +29,7 @@ const classes = {
     flexDirection: "row",
     justifyContent: "center",
   },
-  cardSymbol: { fontSize: 30 },
+  cardSymbol: { fontSize: 40 },
   bottomIconRow: {
     display: "flex",
     flexDirection: "row",
@@ -36,27 +40,29 @@ const classes = {
 interface IProps {
   card: ICard;
   flipped?: boolean;
+  style?: ViewStyle;
 }
 
-const Card = ({ card, flipped = false }: IProps) => {
+const Card = ({ card, flipped = false, style = {} }: IProps) => {
   const suitSymbol = getSuitSymbol(card.suit);
   const numSymbol = getNumberSymbol(card.number);
+  const color = getSuitColor(card.suit);
 
   return (
-    <View style={classes.card}>
+    <View style={{ ...classes.card, ...style }}>
       {!flipped && (
         <View style={classes.topIconRow}>
-          <Text>{suitSymbol}</Text>
-          <Text>{numSymbol}</Text>
+          <Text style={{ color }}>{suitSymbol}</Text>
+          <Text style={{ color }}>{numSymbol}</Text>
         </View>
       )}
       <View style={classes.cardSymbolWrapper}>
-        <Text style={classes.cardSymbol}>N</Text>
+        <Text style={{ ...classes.cardSymbol, color }}>N</Text>
       </View>
       {!flipped && (
         <View style={classes.bottomIconRow}>
-          <Text>{numSymbol}</Text>
-          <Text>{suitSymbol}</Text>
+          <Text style={{ color }}>{numSymbol}</Text>
+          <Text style={{ color }}>{suitSymbol}</Text>
         </View>
       )}
     </View>

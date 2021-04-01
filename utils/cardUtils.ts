@@ -44,10 +44,17 @@ const getSuitSymbol = (suit: CardSuit): string => {
   return "";
 };
 
+const getSuitColor = (suit: CardSuit): string => {
+  if (suit === "C" || suit === "S") return "#000";
+  if (suit === "H" || suit === "D") return "#a82005";
+  return "#000";
+};
+
 export {
   getCardDeck,
   shuffleDeck,
   getShuffledDeck,
   getNumberSymbol,
   getSuitSymbol,
+  getSuitColor,
 };
